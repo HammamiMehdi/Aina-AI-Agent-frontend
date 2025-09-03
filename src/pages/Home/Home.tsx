@@ -9,51 +9,51 @@ import { motion } from 'framer-motion';
 import TypedText from '../../components/TypedText/TypedText';
 import { Link } from 'react-router-dom';
 
-const logo = new URL('../../assets/logo-blue.png', import.meta.url).href;
-const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
-];
+// const logo = new URL('../../assets/logo-blue.png', import.meta.url).href;
+// const navigation = [
+//   { name: 'Product', href: '#' },
+//   { name: 'Features', href: '#' },
+//   { name: 'Marketplace', href: '#' },
+//   { name: 'Company', href: '#' },
+// ];
 
 export default function Home() {
 
-  const items = [
-    {
-      label: "A Propos",
-      bgColor: "#0D0716",
-      textColor: "#fff",
-      links: [
-        { label: "Documentation", ariaLabel: "Documentation" },
-        { label: "A Propos", ariaLabel: "A Propos" }
-      ]
-    },
-    {
-      label: "Projets",
-      bgColor: "#170D27",
-      textColor: "#fff",
-      links: [
-        { label: "Featured", ariaLabel: "Featured Projects" },
-        { label: "Cas d'utilisation", ariaLabel: "Cas d'utilisation" }
-      ]
-    },
-    {
-      label: "Modules",
-      bgColor: "#271E37",
-      textColor: "#fff",
-      links: [
-        { label: "Analyse DOC", ariaLabel: "Email us" },
-        { label: "Analyse financière", ariaLabel: "Analyse financière" },
-        { label: "Vision", ariaLabel: "Vision" },
-        { label: "OCR", ariaLabel: "OCR" }
-      ]
-    }
-  ];
+  // const items = [
+  //   {
+  //     label: "A Propos",
+  //     bgColor: "#0D0716",
+  //     textColor: "#fff",
+  //     links: [
+  //       { label: "Documentation", ariaLabel: "Documentation" },
+  //       { label: "A Propos", ariaLabel: "A Propos" }
+  //     ]
+  //   },
+  //   {
+  //     label: "Projets",
+  //     bgColor: "#170D27",
+  //     textColor: "#fff",
+  //     links: [
+  //       { label: "Featured", ariaLabel: "Featured Projects" },
+  //       { label: "Cas d'utilisation", ariaLabel: "Cas d'utilisation" }
+  //     ]
+  //   },
+  //   {
+  //     label: "Modules",
+  //     bgColor: "#271E37",
+  //     textColor: "#fff",
+  //     links: [
+  //       { label: "Analyse DOC", ariaLabel: "Email us" },
+  //       { label: "Analyse financière", ariaLabel: "Analyse financière" },
+  //       { label: "Vision", ariaLabel: "Vision" },
+  //       { label: "OCR", ariaLabel: "OCR" }
+  //     ]
+  //   }
+  // ];
 
 
 
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  // const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [typedStart, setTypedStart] = useState(false);
 
   const handleAnimationComplete = () => {

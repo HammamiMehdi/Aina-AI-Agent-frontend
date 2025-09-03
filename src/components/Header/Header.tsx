@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import ThemeToggle from '../ThemeToggle/ThemeToggle'
-import App from './../../App';
 
 interface NavItem {
   name: string
