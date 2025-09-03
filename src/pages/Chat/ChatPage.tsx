@@ -30,9 +30,9 @@ export default function ChatPage() {
       <div className="min-h-screen flex flex-col bg-gradient-to-r from-slate-100 to-sky-100 dark:from-gray-950 dark:to-indigo-950 p-6 relative">
 
         {/* Header */}
-        <h1 className="text-3xl font-bold text-center text-white mb-6">
+        {/* <h1 className="text-3xl font-bold text-center text-white mb-6">
           Demandez à {moduleName}
-        </h1>
+        </h1> */}
 
         {/* Messages */}
         <AnimatePresence>
