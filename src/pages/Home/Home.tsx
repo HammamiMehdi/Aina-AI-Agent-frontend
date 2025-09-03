@@ -126,10 +126,10 @@ export default function Home() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
 
           {[
-            { title: 'Aïna DOC', desc: 'Analyse de vos documents', img: '/src/assets/bot-doc.png' },
-            { title: 'Aïna Financière', desc: 'Analyse & gestion financière', img: '/src/assets/bot-finance.png' },
-            { title: 'Aïna Vision', desc: 'Vision et prédictions', img: '/src/assets/bot-vision.png' },
-            { title: 'Aïna OCR', desc: 'Lecture et extraction de texte', img: '/src/assets/bot-OCR.png' },
+            { title: 'Aïna DOC', desc: 'Analyse de vos documents', img: '/bot-doc.png' },
+            { title: 'Aïna Financière', desc: 'Analyse & gestion financière', img: '/bot-finance.png' },
+            { title: 'Aïna Vision', desc: 'Vision et prédictions', img: '/bot-vision.png' },
+            { title: 'Aïna OCR', desc: 'Lecture et extraction de texte', img: '/bot-OCR.png' },
           ].map((module, index) => (
             <motion.div
               key={module.title}
