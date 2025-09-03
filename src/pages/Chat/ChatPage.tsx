@@ -27,7 +27,7 @@ export default function ChatPage() {
 
       <Header />
 
-      <div className="min-h-screen flex flex-col bg-gradient-to-r from-slate-100 to-sky-100 dark:from-gray-950 dark:to-indigo-950 p-6 relative">
+      <div className="min-h-screen flex flex-col bg-gradient-to-r from-slate-100 to-sky-100 dark:from-gray-950 dark:to-indigo-950 p-6 relative pt-12">
 
         {/* Header */}
         {/* <h1 className="text-3xl font-bold text-center text-white mb-6">
@@ -39,7 +39,7 @@ export default function ChatPage() {
           {!isInitial && (
             <motion.div
               key="messages"
-              className="flex-1 overflow-y-auto bg-white/10 backdrop-blur rounded-2xl p-4 mb-4 shadow-md"
+              className="flex-1 overflow-y-auto bg-white/10 backdrop-blur rounded-2xl p-4 mb-4 shadow-md mt-12"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 50 }}
