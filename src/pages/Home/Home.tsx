@@ -9,51 +9,14 @@ import { motion } from 'framer-motion';
 import TypedText from '../../components/TypedText/TypedText';
 import { Link } from 'react-router-dom';
 
-// const logo = new URL('../../assets/logo-blue.png', import.meta.url).href;
-// const navigation = [
-//   { name: 'Product', href: '#' },
-//   { name: 'Features', href: '#' },
-//   { name: 'Marketplace', href: '#' },
-//   { name: 'Company', href: '#' },
-// ];
+
 
 export default function Home() {
 
-  // const items = [
-  //   {
-  //     label: "A Propos",
-  //     bgColor: "#0D0716",
-  //     textColor: "#fff",
-  //     links: [
-  //       { label: "Documentation", ariaLabel: "Documentation" },
-  //       { label: "A Propos", ariaLabel: "A Propos" }
-  //     ]
-  //   },
-  //   {
-  //     label: "Projets",
-  //     bgColor: "#170D27",
-  //     textColor: "#fff",
-  //     links: [
-  //       { label: "Featured", ariaLabel: "Featured Projects" },
-  //       { label: "Cas d'utilisation", ariaLabel: "Cas d'utilisation" }
-  //     ]
-  //   },
-  //   {
-  //     label: "Modules",
-  //     bgColor: "#271E37",
-  //     textColor: "#fff",
-  //     links: [
-  //       { label: "Analyse DOC", ariaLabel: "Email us" },
-  //       { label: "Analyse financière", ariaLabel: "Analyse financière" },
-  //       { label: "Vision", ariaLabel: "Vision" },
-  //       { label: "OCR", ariaLabel: "OCR" }
-  //     ]
-  //   }
-  // ];
 
 
 
-  // const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const [typedStart, setTypedStart] = useState(false);
 
   const handleAnimationComplete = () => {
@@ -72,7 +35,6 @@ export default function Home() {
       dark:from-gray-950 dark:via-gray-900 dark:to-indigo-950
       bg-[length:200%_200%] animate-gradient-x transition-colors duration-300"
     >
-      {/* <div className="min-h-screen w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 dark:from-gray-900 dark:via-indigo-900 dark:to-purple-900 bg-[length:200%_200%] animate-gradient-x transition-colors duration-300"></div> */}
       <Header />
 
       {/* <CardNav
@@ -86,10 +48,10 @@ export default function Home() {
       ease="power3.out"
     />  */}
 
-      <main className="relative isolate px-6 pt-14 lg:px-8 min-h-screen flex flex-col justify-center">
+      <main className="relative isolate px-6  lg:px-8 min-h-screen flex flex-col justify-center">
         <div className="mx-auto max-w-3xl text-center text-white">
           <BlurText
-            text="Bienvenue dans votre espace CLIM-MAG : votre assistante Aïna  !"
+            text="Bienvenue dans votre espace CLIM-MAG : votre assistante Aïna!"
             delay={150}
             animateBy="words"
             direction="top"
@@ -127,7 +89,7 @@ export default function Home() {
 
           {[
             { title: 'Aïna DOC', desc: 'Analyse de vos documents', img: '/bot-doc.png' },
-            { title: 'Aïna Financière', desc: 'Analyse & gestion financière', img: '/bot-finance.png' },
+            { title: 'Aïna Finance', desc: 'Analyse & gestion financière', img: '/bot-finance.png' },
             { title: 'Aïna Vision', desc: 'Vision et prédictions', img: '/bot-vision.png' },
             { title: 'Aïna OCR', desc: 'Lecture et extraction de texte', img: '/bot-OCR.png' },
           ].map((module, index) => (
