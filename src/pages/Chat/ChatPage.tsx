@@ -1,10 +1,10 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Mic, Plus, Send } from "lucide-react";
 import Header from "../../components/Header/Header";
-import { AnimatePresence, motion } from "framer-motion";
+import {  motion } from "framer-motion";
 import TypedText from "../../components/TypedText/TypedText";
 
 export default function ChatPage() {
@@ -14,14 +14,14 @@ export default function ChatPage() {
   const [isInitial, setIsInitial] = useState(true); // first message state
 
 
-  const [loading, setLoading] = useState(false); // new
+  //const [loading, setLoading] = useState(false); // new
 
-  const staticResponses: Record<string, string> = {
-    bonjour: "Bonjour, comment puis-je vous aider ?",
-    "quel est ton nom": "Je suis Aïna, votre assistant IA.",
-    "que peux-tu faire": "Je peux vous aider à gérer vos modules et répondre à vos questions.",
-    "merci": "Avec plaisir !",
-  };
+  // const staticResponses: Record<string, string> = {
+  //   bonjour: "Bonjour, comment puis-je vous aider ?",
+  //   "quel est ton nom": "Je suis Aïna, votre assistant IA.",
+  //   "que peux-tu faire": "Je peux vous aider à gérer vos modules et répondre à vos questions.",
+  //   "merci": "Avec plaisir !",
+  // };
   
   const handleSend = () => {
     if (!input.trim()) return;
@@ -33,7 +33,7 @@ export default function ChatPage() {
     if (isInitial) setIsInitial(false);
   
     // Show loader for AI response
-    setLoading(true);
+    //setLoading(true);
   
     // Simulate API delay (2 seconds for now)
     setTimeout(() => {
@@ -51,7 +51,7 @@ export default function ChatPage() {
       }
   
       setMessages((prev) => [...prev, `🤖: ${response}`]);
-      setLoading(false);
+      //setLoading(false);
     }, 2000);
   };
 
