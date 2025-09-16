@@ -1,41 +1,81 @@
 'use client'
 
-import { useState } from 'react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useEffect, useRef, useState } from 'react'
+import { Bars3Icon, CurrencyDollarIcon, DocumentTextIcon, EyeIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import ThemeToggle from '../ThemeToggle/ThemeToggle'
 import { Link } from 'react-router-dom'
+
+
 
 interface NavItem {
   name: string
   href: string
+  icon?: React.ReactNode
 }
 
+// Add icons for each nav item
 const navigation: NavItem[] = [
-  { name: 'Aïna DOC', href: '/chat/Aïna DOC' },
-  { name: 'Aïna Finance', href: '/chat/Aïna Finance' },
-  { name: 'Aïna Vision', href: '/chat/Aïna Vision' },
-  { name: 'Aïna OCR', href: '/chat/Aïna OCR' },
+  { name: 'Aïna DOC', href: '/chat/Aïna DOC', icon: <DocumentTextIcon className="h-5 w-5 mr-2 inline" /> },
+  { name: 'Aïna Finance', href: '/chat/Aïna Finance', icon: <CurrencyDollarIcon className="h-5 w-5 mr-2 inline" /> },
+  { name: 'Aïna Vision', href: '/chat/Aïna Vision', icon: <EyeIcon className="h-5 w-5 mr-2 inline" /> },
 ]
+
+
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  
+
+const logoRef = useRef<HTMLImageElement>(null);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    if (logoRef.current) {
+      logoRef.current.classList.remove("animate-logo");
+      void logoRef.current.offsetWidth; // trigger reflow
+      logoRef.current.classList.add("animate-logo");
+    }
+  }, 20000); // toutes les 30 secondes
+
+  // lancer la première animation au montage si tu veux
+  if (logoRef.current) logoRef.current.classList.add("animate-logo");
+
+  return () => clearInterval(interval);
+}, []);
 
   return (
     <header className="absolute inset-x-0 top-0 z-50">
       <nav className="flex items-center justify-between p-6 lg:px-8">
         
         {/* Logo */}
-        <div className="flex lg:flex-1 items-center space-x-2">
+        {/* <div className="flex lg:flex-1 items-center space-x-2">
           <Link to="/" className="flex items-center -m-1.5 p-1.5">
             <span className="sr-only">Aïna AI Agent</span>
             <img
               alt="Aïna AI Agent Logo"
-              src="/logo-blue.png" // ← Replace with your logo path
+              src="/aina-clim-mag-v7.png"
               className="h-12 w-auto"
             /> 
-            <span className="text-2xl font-bold text-gray-900 dark:text-white ml-4">
-              aïna
-            </span>
+            
+          </Link>
+        </div> */}
+        <div className="flex lg:flex-1 items-center space-x-2">
+          <Link to="/" className="flex items-center -m-1.5 p-1.5 space-x-4">
+            <span className="sr-only">Aïna AI Agent</span>
+
+            <img
+              ref={logoRef}
+              alt="Logo Aïna"
+              src="/aina-clim-mag-v8.png"
+              className="h-12 w-auto"
+            />
+
+            <img
+              alt="Logo partenaire"
+              src="/aina-clim-mag-v9.png"
+              className="h-12 w-auto"
+            />
+            
           </Link>
         </div>
 
@@ -45,8 +85,9 @@ export default function Header() {
             <Link
               key={item.name}
               to={item.href}
-              className="text-gray-900 dark:text-white font-semibold hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+              className="text-gray-900 dark:text-white font-semibold hover:text-indigo-600 dark:hover:text-indigo-400 transition flex items-center"
             >
+              {item.icon}
               {item.name}
             </Link>
           ))}
@@ -92,8 +133,9 @@ export default function Header() {
                 key={item.name}
                 to={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block rounded-lg px-3 py-2 text-gray-900 dark:text-white font-semibold hover:bg-gray-100 dark:hover:bg-gray-800"
+                className="flex items-center rounded-lg px-3 py-2 text-gray-900 dark:text-white font-semibold hover:bg-gray-100 dark:hover:bg-gray-800"
               >
+                {item.icon}
                 {item.name}
               </Link>
             ))}
