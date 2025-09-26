@@ -101,3 +101,21 @@ button:focus-visible {
   animation: logoBounceRotate 2s ease-in-out ;
   animation-delay: 1s;
 } 
+
+/* Scrollbar moderne et discret */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.4); /* Indigo clair */
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.7);
+}

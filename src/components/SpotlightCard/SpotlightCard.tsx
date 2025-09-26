@@ -58,9 +58,15 @@ import React, { useRef, useState } from 'react';
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={`relative rounded-3xl border border-neutral-800 
-        bg-neutral-900/30 backdrop-blur-md overflow-hidden p-6 sm:p-8 min-h-[350px] flex flex-col justify-between 
-        w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg 
-        ${className}`}
+      bg-neutral-900/30 backdrop-blur-md overflow-hidden 
+      p-2 sm:p-6
+      min-h-[20px]            /* ✅ Hauteur mobile = 20px */
+      sm:min-h-[18rem]        /* >=640px : hauteur normale */
+      md:min-h-[20rem] 
+      lg:min-h-[24rem]
+      flex flex-col justify-between
+      w-full
+      ${className}`}
     >
       {/* Spotlight effect */}
       <div
@@ -78,14 +84,15 @@ import React, { useRef, useState } from 'react';
     
       {/* Hover image */}
       {imageSrc && (
-        <img
-          src={imageSrc}
-          alt="Card visual"
-          className={`absolute right-0 bottom-0 h-[360px] w-auto transform transition-transform duration-500 ease-in-out 
-            ${hovered ? 'translate-x-20 translate-y-[-80px] scale-115' : 'translate-x-36 translate-y-0 scale-100'}
-            pointer-events-none`}
-        />
-      )}
+  <img
+    src={imageSrc}
+    alt="Card visual"
+    className={`absolute right-0 bottom-0 h-[360px] w-auto transform transition-transform duration-500 ease-in-out 
+      ${hovered ? 'translate-x-20 translate-y-[-80px] scale-115' : 'translate-x-36 translate-y-0 scale-100'}
+      pointer-events-none
+      hidden sm:block`} // ✅ cache sur mobile
+  />
+)}
     </div>
     
     );
