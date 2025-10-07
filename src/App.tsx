@@ -1,9 +1,9 @@
 import './App.css'
 import Home from './pages/Home/Home';
-import ChatPage from './pages/Chat/ChatPage';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import SignInPage from './pages/signin/SignInPage';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import Chat from './pages/Chat/Chat';
 
 
 
@@ -27,7 +27,7 @@ function App() {
           path="/chat/:moduleName"
           element={
             <ProtectedRoute>
-              <ChatPage />
+              <Chat />
             </ProtectedRoute>
           }
         />

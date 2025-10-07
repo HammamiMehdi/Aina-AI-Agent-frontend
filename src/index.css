@@ -119,3 +119,18 @@ button:focus-visible {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(99, 102, 241, 0.7);
 }
+
+
+/**********************/
+
+@media (min-width: 1024px) {
+  .lg\:static {
+    position: static;
+  }
+  .lg\:pointer-events-none {
+    pointer-events: none;
+  }
+  .lg\:shadow-none {
+    box-shadow: none;
+  }
+}

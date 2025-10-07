@@ -2,55 +2,75 @@ import React, { useRef, useState } from 'react';
 
 
 
+interface SpotlightCardProps extends React.PropsWithChildren {
+  className?: string;
+  spotlightColor?: `rgba(${number}, ${number}, ${number}, ${number})`;
+  imageSrc?: string;
+  size?: 'small' | 'medium' | 'large';
+}
 
-// interface Position {
-//     x: number;
-//     y: number;
-//   }
-  
-  interface SpotlightCardProps extends React.PropsWithChildren {
-    className?: string;
-    spotlightColor?: `rgba(${number}, ${number}, ${number}, ${number})`;
-    imageSrc?: string; // new prop for card image
-  }
-  
-  const SpotlightCard: React.FC<SpotlightCardProps> = ({
-    children,
-    className = '',
-    spotlightColor = 'rgba(255, 255, 255, 0.25)',
-    imageSrc
-  }) => {
-    const divRef = useRef<HTMLDivElement>(null);
-    const [isFocused, setIsFocused] = useState<boolean>(false);
-    const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
-    const [opacity, setOpacity] = useState<number>(0);
-    const [hovered, setHovered] = useState<boolean>(false);
-  
-    const handleMouseMove: React.MouseEventHandler<HTMLDivElement> = e => {
-      if (!divRef.current || isFocused) return;
-      const rect = divRef.current.getBoundingClientRect();
-      setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-    };
-  
-    const handleFocus = () => {
-      setIsFocused(true);
-      setOpacity(0.6);
-    };
-    const handleBlur = () => {
-      setIsFocused(false);
-      setOpacity(0);
-    };
-    const handleMouseEnter = () => {
-      setHovered(true);
-      setOpacity(0.6);
-    };
-    const handleMouseLeave = () => {
-      setHovered(false);
-      setOpacity(0);
-    };
-  
-    return (
-      <div
+const SpotlightCard: React.FC<SpotlightCardProps> = ({
+  children,
+  className = '',
+  spotlightColor = 'rgba(255, 255, 255, 0.25)',
+  imageSrc,
+  size = 'medium'
+}) => {
+  const divRef = useRef<HTMLDivElement>(null);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
+  const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [opacity, setOpacity] = useState<number>(0);
+  const [hovered, setHovered] = useState<boolean>(false);
+
+  // Tailles responsives basées sur la prop size
+  const sizeClasses = {
+    small: 'min-h-[4rem] sm:min-h-[12rem] md:min-h-[14rem] lg:min-h-[16rem]',
+    medium: 'min-h-[6rem] sm:min-h-[16rem] md:min-h-[18rem] lg:min-h-[20rem]',
+    large: 'min-h-[8rem] sm:min-h-[18rem] md:min-h-[20rem] lg:min-h-[24rem]'
+  };
+
+  // Tailles d'images adaptées au mobile
+  const imageSizes = {
+    small: 'h-[100px] sm:h-[200px]',
+    medium: 'h-[120px] sm:h-[280px]',
+    large: 'h-[140px] sm:h-[360px]'
+  };
+
+  // Position d'image adaptée au mobile
+  const imagePositions = {
+    small: hovered ? 'translate-x-8 translate-y-[-20px] scale-105' : 'translate-x-28 translate-y-0 scale-100',
+    medium: hovered ? 'translate-x-8 translate-y-[-20px] scale-105' : 'translate-x-28 translate-y-0 scale-100',
+    large: hovered ? 'translate-x-8 translate-y-[-20px] scale-105' : 'translate-x-28 translate-y-0 scale-100'
+  };
+
+  const handleMouseMove: React.MouseEventHandler<HTMLDivElement> = e => {
+    if (!divRef.current || isFocused) return;
+    const rect = divRef.current.getBoundingClientRect();
+    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
+  const handleFocus = () => {
+    setIsFocused(true);
+    setOpacity(0.6);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+    setOpacity(0);
+  };
+
+  const handleMouseEnter = () => {
+    setHovered(true);
+    setOpacity(0.6);
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+    setOpacity(0);
+  };
+
+  return (
+    <div
       ref={divRef}
       onMouseMove={handleMouseMove}
       onFocus={handleFocus}
@@ -58,15 +78,12 @@ import React, { useRef, useState } from 'react';
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={`relative rounded-3xl border border-neutral-800 
-      bg-neutral-900/30 backdrop-blur-md overflow-hidden 
-      p-2 sm:p-6
-      min-h-[20px]            /* ✅ Hauteur mobile = 20px */
-      sm:min-h-[18rem]        /* >=640px : hauteur normale */
-      md:min-h-[20rem] 
-      lg:min-h-[24rem]
-      flex flex-col justify-between
-      w-full
-      ${className}`}
+        bg-neutral-900/30 backdrop-blur-md overflow-hidden 
+        p-4 sm:p-6
+        ${sizeClasses[size]}
+        flex flex-col justify-between
+        w-full
+        ${className}`}
     >
       {/* Spotlight effect */}
       <div
@@ -82,20 +99,20 @@ import React, { useRef, useState } from 'react';
         {children}
       </div>
     
-      {/* Hover image */}
+      {/* Hover image - TOUJOURS visible maintenant */}
       {imageSrc && (
-  <img
-    src={imageSrc}
-    alt="Card visual"
-    className={`absolute right-0 bottom-0 h-[360px] w-auto transform transition-transform duration-500 ease-in-out 
-      ${hovered ? 'translate-x-20 translate-y-[-80px] scale-115' : 'translate-x-36 translate-y-0 scale-100'}
-      pointer-events-none
-      hidden sm:block`} // ✅ cache sur mobile
-  />
-)}
+        <img
+          src={imageSrc}
+          alt="Card visual"
+          className={`absolute right-0 bottom-0 w-auto transform transition-transform duration-500 ease-in-out 
+            ${imageSizes[size]}
+            ${imagePositions[size]}
+            pointer-events-none
+            opacity-80 sm:opacity-100`} // Légère transparence sur mobile pour mieux voir le texte
+        />
+      )}
     </div>
-    
-    );
-  };
-  
-  export default SpotlightCard;
+  );
+};
+
+export default SpotlightCard;
